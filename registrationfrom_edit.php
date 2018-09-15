@@ -1,5 +1,6 @@
 <?php
 $db = mysqli_connect("localhost","root","","register");
+$id = $_GET['id'];
 if (isset($_POST['Done'])) {
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -9,10 +10,10 @@ if (isset($_POST['Done'])) {
 	$gender = $_POST['gender'];
 	$age = $_POST['age'];
 	$choose = $_POST['choose'];
-	$sql = "INSERT INTO user(name,email,website,comment,birthday,gender,age,choose) VALUES ('$name','$email','$website','$comment','$birthday','$gender','$age','$choose')";
-	$register = mysqli_query($db,$sql);
-	if($register){
-       echo mysql_error();
+	$sql = "UPDATE user SET name = '$name', email = '$email', website = '$website', comment = '$comment', birthday = '$birthday', gender = '$gender', age = '$age', choose = '$choose' WHERE id='$id'";
+	$edit = mysqli_query($db,$sql);
+	if (!$edit) {
+		echo mysql_error();
 	}else{
 		header("location:registrationfrom1.php");
 	}
@@ -79,7 +80,7 @@ function input($data){
 ?>
 <h1>Registration Form</h1>
 <span class="error">* REQUIRED FILE *</span>
-<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+<form  method="POST">
 	<b>name:</b><input type="text" name="name" placeholder="name">
     <span class="error"> * <?php echo $nameERR;?></span>
 	<br><br>

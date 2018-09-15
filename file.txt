@@ -1,3 +1,3 @@
-hasib,22,comilla
-sakib,19,comilla
-pito,28,dhaka
+Hasib,22,Comilla
+Sakib,20,Dhaka
+Pito,28,Dhaka
